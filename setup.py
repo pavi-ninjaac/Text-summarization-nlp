@@ -14,7 +14,7 @@ repo_name: str = "Text-summarization-nlp"
 git_hub_username: str = "pavi-ninjaac"
 author_name: str = "Pavithra Devi M"
 author_email = "pavipd495@gmail.com"
-package_name: str = "TextSummarization"
+package_name: str = "TextSummarizer"
 
 
 # setup the project.
