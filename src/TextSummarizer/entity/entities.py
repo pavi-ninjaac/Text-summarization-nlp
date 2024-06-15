@@ -23,3 +23,13 @@ class DataValidationConfig:
     root_dir: str
     status_file: str
     all_required_folders: list
+
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    """
+    Return type of the data transformation config function.
+    """
+    root_dir: str
+    data_path: str
+    tokenizer_name: str
