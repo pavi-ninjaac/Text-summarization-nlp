@@ -31,3 +31,4 @@ model_evaluation:
   model_path: artifacts/model_trainer/pegasus-samsum-model
   tokenizer_path: artifacts/model_trainer/tokenizer
   metric_file_name: artifacts/model_evaluation/metrics.csv
+  hub_model_name: pavithra-devi/pegasus-multi-news

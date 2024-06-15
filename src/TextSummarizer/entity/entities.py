@@ -66,3 +66,4 @@ class ModelEvaluationConfig:
     model_path: str
     tokenizer_path: str
     metric_file_name: str
+    hub_model_name: str
