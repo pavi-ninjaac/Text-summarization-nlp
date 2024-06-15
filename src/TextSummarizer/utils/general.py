@@ -11,22 +11,37 @@ from box import ConfigBox
 from box.exceptions import BoxValueError
 from ensure import ensure_annotations
 
-from src.TextSummarizer.logging import backend_logger
+from src.TextSummarizer.logger import backend_logger
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose=True):
-    """create list of directories
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
+    """
+    Read yaml file and return as Dictionary.
 
-    Args:
-        path_to_directories (list): list of path of directories
-        ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to False.
+    :param path_to_yaml: Path to yaml file.
+    :return: A ConfigBox dictionary object containing the the yaml file contents.
+    """
+    try:
+        with open(path_to_yaml) as yaml_file:
+            content = yaml.safe_load(yaml_file)
+            backend_logger.info(f"yaml file: {path_to_yaml} loaded successfully")
+            return ConfigBox(content)
+    except BoxValueError:
+        raise ValueError(f"yaml file: {path_to_yaml} is empty.")
+    except Exception as exp:
+        raise exp
+
+
+def create_directories(path_to_directories: list) -> None:
+    """
+    create list of directories.
+
+    :params path_to_directories: list of path of directories.
     """
     for path in path_to_directories:
         os.makedirs(path, exist_ok=True)
-        if verbose:
-            backend_logger.info(f"created directory at: {path}")
-
+        backend_logger.info(f"created directory at: {path}")
 
 
 @ensure_annotations
