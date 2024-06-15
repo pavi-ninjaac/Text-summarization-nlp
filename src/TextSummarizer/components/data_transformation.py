@@ -36,6 +36,9 @@ class DataTransformation:
         Tokenzie the dataset and store it to the disk.
         """
         backend_logger.info("Converting text to tokens....")
+        # Check if the dataset folder already exists.
+        if os.path.exists(os.path.join(self.config.root_dir,"dataset")):
+            return
         dataset = load_from_disk(self.config.data_path)
         dataset = dataset.map(self.convert_examples_to_features, batched = True)
         dataset.save_to_disk(os.path.join(self.config.root_dir,"dataset"))

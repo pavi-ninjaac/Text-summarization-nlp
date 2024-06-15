@@ -8,10 +8,12 @@ from src.TextSummarizer.pipeline.step_02_data_validation import DataValidationPi
 from src.TextSummarizer.pipeline.step_03_data_transformation import (
     DataTransformationPipeline,
 )
+from src.TextSummarizer.pipeline.step_04_train_model import ModelTrainerPipeline
 
 stage_name_01: str = "Stage 1: Data Integration Stage"
 stage_name_02: str = "Stage 2: Data Validation Stage"
 stage_name_03: str = "Stage 3: Data Transformation Stage"
+stage_name_04: str = "Stage 4: Model training Stage"
 
 
 line_msg: str = "="*100
@@ -44,3 +46,13 @@ try:
     backend_logger.info(line_msg)
 except Exception as err:
     backend_logger.error(f"Data Transformation pipeline failed. Reason: {err}")
+
+
+try:
+    backend_logger.info(line_msg)
+    backend_logger.info(f"Stage {stage_name_04} started")
+    ModelTrainerPipeline().run()
+    backend_logger.info(f"Stage {stage_name_04} completed.")
+    backend_logger.info(line_msg)
+except Exception as err:
+    backend_logger.error(f"Model training pipeline failed. Reason: {err}")
