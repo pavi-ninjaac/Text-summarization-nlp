@@ -4,3 +4,9 @@ artifacts_root: artifacts
 data_ingestion:
   dataset_name: "alexfabbri/multi_news"
   arrow_dataset_dir: artifacts/data
+
+
+data_validation:
+  root_dir: artifacts/data_validation
+  status_file: artifacts/data_validation/status.txt
+  all_required_folders: ["train", "test", "validation", "dataset_dict.json"]

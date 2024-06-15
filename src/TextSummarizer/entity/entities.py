@@ -13,3 +13,13 @@ class DataIngestionConfig:
     """
     dataset_name: str
     arrow_dataset_dir: str
+
+
+@dataclass()
+class DataValidationConfig:
+    """
+    Return type of the data validation config function.
+    """
+    root_dir: str
+    status_file: str
+    all_required_folders: list

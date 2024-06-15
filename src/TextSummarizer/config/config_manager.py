@@ -35,3 +35,19 @@ class ConfigManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> entities.DataValidationConfig:
+        """
+        Get the config which is needed to validate the data files.
+        """
+        config = self.config.data_validation
+
+        create_directories([config.root_dir])
+
+        data_validation_config = entities.DataValidationConfig(
+            root_dir=config.root_dir,
+            status_file=config.status_file,
+            all_required_folders=config.all_required_folders,
+        )
+
+        return data_validation_config
